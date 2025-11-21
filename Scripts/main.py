@@ -16,11 +16,15 @@ def main():
         
         if opcion == "1":
             print("\n Ejecutando extracción de datos...")
-            print("(Esta función se implementará después)")
+            from poke_api import main as extraer_datos
+            extraer_datos()
             
         elif opcion == "2":
             print("\n Mostrando datos de la base de datos...")
-            print("(Esta función se implementará después)")
+            print("\n Creando/verificando base de datos...")
+            from dbManager import create_database, test_connection
+            create_database()
+            test_connection()
             
         elif opcion == "3":
             print("\n Generando análisis exploratorio...")
