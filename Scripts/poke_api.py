@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 
 def get_pokemon_data(pokemon_id: int):
-    """Obtiene datos de un Pokémon de la API"""
+    #Obtiene datos de un Pokémon de la API
     try:
         url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
         response = requests.get(url)
@@ -14,11 +14,11 @@ def get_pokemon_data(pokemon_id: int):
         return None
 
 def extract_pokemon_info(api_data):
-    """Extrae la información que necesitamos del JSON de la API"""
+    # Extrae la información que necesitamos del JSON de la API
     if not api_data:
         return None
     
-    # Stats que nos interesan
+    # Stats 
     stats = {stat['stat']['name']: stat['base_stat'] for stat in api_data['stats']}
     
     return {
@@ -36,12 +36,12 @@ def extract_pokemon_info(api_data):
     }
 
 def main():
-    print(" Iniciando extracción de los primeros 20 Pokémon...")
+    print(" Iniciando extracción de los Pokémon...")
     
     conn = sqlite3.connect('pokemon.db')
     
     for pokemon_id in range(1, 21):
-        print(f"📡 Obteniendo Pokémon {pokemon_id}...")
+        print(f" Obteniendo Pokémon {pokemon_id}...")
         raw_data = get_pokemon_data(pokemon_id)
         clean_data = extract_pokemon_info(raw_data)
         
@@ -52,7 +52,7 @@ def main():
             print(f" {clean_data['name'].capitalize()} guardado")
     
     conn.close()
-    print("🎉 ¡Extracción completada!")
+    print("¡Extracción completada!")
 
 if __name__ == "__main__":
     main()

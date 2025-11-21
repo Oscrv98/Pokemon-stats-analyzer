@@ -20,7 +20,6 @@ def main():
             extraer_datos()
             
         elif opcion == "2":
-            print("\n Mostrando datos de la base de datos...")
             print("\n Creando/verificando base de datos...")
             from dbManager import create_database, test_connection
             create_database()

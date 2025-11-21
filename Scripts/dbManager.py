@@ -2,12 +2,13 @@ import sqlite3
 import os
 
 def create_database():
-    """Crea la base de datos en la MISMA carpeta"""
-    db_path = 'pokemon.db'  # ⬅ MISMA carpeta
+    #Crea la bd
+    db_path = 'pokemon.db'  #Nobre de la Bd
     
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    
+
+    #SQL script
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS pokemons (
             id INTEGER PRIMARY KEY,
@@ -29,12 +30,12 @@ def create_database():
     print(f" Base de datos creada: {os.path.abspath(db_path)}")
 
 def test_connection():
-    """Verifica que la base de datos funciona"""
+    #Test a la Bd
     db_path = 'pokemon.db'
     
     if os.path.exists(db_path):
-        print(f"✅ ARCHIVO ENCONTRADO: {db_path}")
-        print(f"📏 Tamaño: {os.path.getsize(db_path)} bytes")
+        print(f"!! ARCHIVO ENCONTRADO: {db_path}")
+        print(f"Tamaño: {os.path.getsize(db_path)} bytes")
         
         # Mostrar contenido
         conn = sqlite3.connect(db_path)
